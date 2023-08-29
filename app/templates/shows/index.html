@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}TV Show{% endblock %}
+
+{% block content %}
+
+<div class="col">
+    <h2 class="mb-5">{{ session.user.first_name }} {{ session.user.last_name }}</h2>
+
+    <h3 class="mb-3">All TV Shows</h3>
+    {% if shows %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Network</th>
+                <th scope="col">Release Date</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for show in shows %}
+            <tr>
+                <th scope="row">{{ show.title }}</th>
+                <td>{{ show.network }}</td>
+                <td>{{ show.release_date }}</td>
+                <td>
+                    <a href="{{ url_for('read_show', show_id=show.id) }}" class="btn btn-sm btn-info">Show</a>
+                    <a href="" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{{ url_for('delete_show', show_id=show.id) }}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No shows found.</p>
+    {% endif %}
+</div>
+{% endblock %}

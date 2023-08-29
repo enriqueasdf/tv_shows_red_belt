@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}TV Show | Create{% endblock %}
+
+{% block content %}
+<div class="col-6">
+    <h2 class="mb-5">Add a New Show</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ url_for('create_show') }}" method="post">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" name="title" id="title" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="network" class="form-label">Network</label>
+                    <input type="text" name="network" id="network" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="release_date" class="form-label">Release Date</label>
+                    <input type="date" name="release_date" id="release_date" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" id="description" cols="30" rows="5" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success float-end">Add</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
